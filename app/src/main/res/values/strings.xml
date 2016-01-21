@@ -2,4 +2,9 @@
     <string name="app_name">Framework</string>
     <string name="widget_service">Widget Service</string>
     <string name="none">none</string>
+    <string name="Component">Component</string>
+    <string name="five_nested_frame_activity">Five Nested Frame Layout</string>
+    <string name="five_nested_relative_activity">Five Nested Relative Layout</string>
+    <string name="five_nested_linear_activity">Five Nested Linear Layout</string>
+    <string name="five_nested_linear_with_weight_activity">Five Nested Linear With Weight Layout</string>
 </resources>

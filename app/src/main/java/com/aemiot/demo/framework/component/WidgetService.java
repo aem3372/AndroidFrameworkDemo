@@ -1,10 +1,12 @@
-package com.aemiot.demo.framework;
+package com.aemiot.demo.framework.component;
 
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,12 +23,19 @@ public class WidgetService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-        Button btn = new Button(this);
+        final WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        final Button btn = new Button(this);
         btn.setText("button");
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wm.removeView(btn);
+            }
+        });
         WindowManager.LayoutParams lp =  new WindowManager.LayoutParams();
         lp.type = WindowManager.LayoutParams.TYPE_PHONE;
         lp.gravity = Gravity.CENTER;
+        lp.format = PixelFormat.RGBA_8888;
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
